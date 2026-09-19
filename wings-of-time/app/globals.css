@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #1f1612;
+  --foreground: #f5e6d3;
+  --accent: #c97b4a;
+  --accent-light: #e6a87c;
+  --ink: #2b1d17;
+  --paper: #fff8f0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle warm vignette overlay for hero sections */
+.warm-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(31, 22, 18, 0) 0%,
+    rgba(31, 22, 18, 0.65) 100%
+  );
+}
+
+/* Slow orbit for the dotted ring around the author photo */
+@keyframes swirl-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.swirl-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: swirl-orbit 60s linear infinite;
+}
+
+/* Gentle drift for the flourish curls */
+@keyframes swirl-drift {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+.swirl-curl {
+  transform-origin: center;
+  animation: swirl-drift 12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swirl-ring,
+  .swirl-curl {
+    animation: none;
+  }
+}
+
+/* Hero title entrance: staggered fade + rise on the "Wings / OF / TIME" spans */
+@keyframes title-in {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title span {
+  opacity: 0;
+  animation: title-in 0.7s ease-out forwards;
+}
+
+.hero-title span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.hero-title span:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.hero-title span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* 3D paperback presentation: spine on the left, page edges on the right */
+@keyframes book-rock {
+  0%,
+  100% {
+    transform: perspective(1200px) rotateY(-10deg) translateY(0);
+  }
+  50% {
+    transform: perspective(1200px) rotateY(-20deg) translateY(-8px);
+  }
+}
+
+.book-cover {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: book-rock 6s ease-in-out infinite;
+  box-shadow:
+    -16px 16px 32px rgba(0, 0, 0, 0.4),
+    -5px 5px 10px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-cover {
+    transform: perspective(1200px) rotateY(-12deg);
+    animation: none;
+  }
+}
+
+.book-cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 38px;
+  background: linear-gradient(
+    to right,
+    #2b1d17 0%,
+    #4a342c 25%,
+    #2b1d17 55%,
+    #1a120f 100%
+  );
+  transform: translateX(-100%) rotateY(-50deg);
+  transform-origin: right center;
+  border-radius: 2px 0 0 2px;
+}
+
+.book-cover::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 0;
+  bottom: 3px;
+  width: 26px;
+  background: repeating-linear-gradient(
+    to right,
+    #fff8f0 0px,
+    #f0e9df 2px,
+    #d4ccc2 3px
+  );
+  transform: translateX(100%) rotateY(30deg);
+  transform-origin: left center;
+  border-radius: 0 1px 1px 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pulsing attention ring for the primary CTA */
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(201, 123, 74, 0.5),
+      -8px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px rgba(201, 123, 74, 0),
+      -8px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.hero-cta {
+  animation: cta-glow 2.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta {
+    animation: none;
+  }
+}

@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+dist/
+out/
+build/
+
+# misc
+.DS_Store
+*.tsbuildinfo
+.env*.local
+.vercel
+
+# local agent config
+.devin/config.local.json
+
+# preserved inner-repo git history
+wings-of-time-git-backup/
