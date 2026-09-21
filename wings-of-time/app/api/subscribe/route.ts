@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       email,
       groups: [MAILERLITE_GROUP_ID],
-      status: "unconfirmed",
+      status: "active",
     }),
   });
 
