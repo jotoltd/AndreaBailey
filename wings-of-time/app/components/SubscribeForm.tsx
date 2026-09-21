@@ -2,20 +2,13 @@
 
 import { useState } from "react";
 
-const MAILERLITE_FORM_ACTION =
-  "https://assets.mailerlite.com/jsonp/2629902/forms/199237330005919648/subscribe";
-
 export async function subscribeEmail(email: string) {
-  const res = await fetch(MAILERLITE_FORM_ACTION, {
+  const res = await fetch("/api/subscribe", {
     method: "POST",
-    body: new URLSearchParams({
-      "fields[email]": email,
-      "ml-submit": "1",
-      anticsrf: "true",
-    }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
   });
-  const data = await res.json().catch(() => null);
-  if (!res.ok || !data?.success) {
+  if (!res.ok) {
     throw new Error("MailerLite subscription failed");
   }
 }
