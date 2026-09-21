@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SubscribeForm from "./SubscribeForm";
 
 export default function GetUpdatesButton() {
   const [open, setOpen] = useState(false);
@@ -78,27 +79,10 @@ export default function GetUpdatesButton() {
                   Be the first to hear about signings, extras, and what Andrea
                   is writing next.
                 </p>
-                <form
-                  className="mt-6 flex flex-col gap-3"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                >
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                    autoFocus
-                    className="rounded border border-[#f5e6d3]/20 bg-[#fff8f0]/5 px-4 py-3 text-lg text-[#fff8f0] placeholder:text-[#f5e6d3]/40 focus:border-[#c97b4a] focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="rounded bg-[#c97b4a] px-8 py-3 font-[family-name:var(--font-cinzel)] text-base font-semibold uppercase tracking-wider text-[#fff8f0] transition hover:bg-[#e6a87c]"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+                <SubscribeForm
+                  variant="modal"
+                  onSuccess={() => setSubmitted(true)}
+                />
                 <p className="mt-3 text-sm text-[#fff8f0]/80">
                   No spam. Just occasional notes from the author.
                 </p>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetUpdatesButton from "./components/GetUpdatesButton";
+import SubscribeForm from "./components/SubscribeForm";
 import AirfieldScene from "./components/AirfieldScene";
 import FadeIn from "./components/FadeIn";
 
@@ -367,20 +368,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <form className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                className="flex-1 rounded border border-[#f5e6d3]/20 bg-[#fff8f0]/5 px-4 py-3.5 text-lg text-[#fff8f0] placeholder:text-[#f5e6d3]/40 focus:border-[#c97b4a] focus:outline-none md:text-xl"
-              />
-              <button
-                type="submit"
-                className="rounded bg-[#c97b4a] px-8 py-3.5 font-[family-name:var(--font-cinzel)] text-base font-semibold uppercase tracking-wider text-[#fff8f0] transition hover:bg-[#e6a87c]"
-              >
-                Subscribe
-              </button>
-            </form>
+            <SubscribeForm />
             <p className="mt-4 text-sm text-[#f5e6d3]/60">
               No spam. Just occasional notes from the author. Unsubscribe any
               time.
