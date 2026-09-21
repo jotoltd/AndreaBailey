@@ -15,10 +15,18 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
+  if (body?.website) {
+    return NextResponse.json({ success: true });
+  }
   const email = typeof body?.email === "string" ? body.email.trim() : "";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
+
+  const ip = request.headers
+    .get("x-forwarded-for")
+    ?.split(",")[0]
+    ?.trim();
 
   const res = await fetch(MAILERLITE_SUBSCRIBERS_URL, {
     method: "POST",
@@ -30,6 +38,8 @@ export async function POST(request: Request) {
       email,
       groups: [MAILERLITE_GROUP_ID],
       status: "active",
+      resubscribe: true,
+      ...(ip ? { ip_address: ip } : {}),
     }),
   });
 

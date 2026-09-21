@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-export async function subscribeEmail(email: string) {
+export async function subscribeEmail(email: string, honeypot = "") {
   const res = await fetch("/api/subscribe", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email, website: honeypot }),
   });
   if (!res.ok) {
     throw new Error("MailerLite subscription failed");
@@ -29,7 +29,8 @@ export default function SubscribeForm({
     e.preventDefault();
     setStatus("submitting");
     try {
-      await subscribeEmail(email);
+      const honeypot = new FormData(e.currentTarget).get("website");
+      await subscribeEmail(email, typeof honeypot === "string" ? honeypot : "");
       setStatus("done");
       onSuccess?.();
     } catch {
@@ -56,6 +57,14 @@ export default function SubscribeForm({
           : "mt-6 flex flex-col gap-3"
       }
     >
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <input
         type="email"
         placeholder="Enter your email"
