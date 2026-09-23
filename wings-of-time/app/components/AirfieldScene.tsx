@@ -2,32 +2,6 @@ import type { ReactNode } from "react";
 
 type Variant = "airfield" | "swirls" | "wing" | "feathers";
 
-const bomber = (
-  <g transform="translate(430 40) scale(1.1)">
-    <path d="M40 62 C70 52 200 48 300 50 C330 51 345 56 348 60 C345 64 330 69 300 70 C200 74 70 70 40 66 Z" />
-    <ellipse cx="310" cy="50" rx="16" ry="6" />
-    <path d="M120 55 L60 10 L75 8 L150 48 Z" />
-    <path d="M150 70 L75 110 L60 108 L120 63 Z" />
-    <rect x="95" y="30" width="18" height="10" rx="4" transform="rotate(-32 104 35)" />
-    <rect x="115" y="22" width="18" height="10" rx="4" transform="rotate(-32 124 27)" />
-    <rect x="95" y="84" width="18" height="10" rx="4" transform="rotate(32 104 89)" />
-    <rect x="115" y="92" width="18" height="10" rx="4" transform="rotate(32 124 97)" />
-    <path d="M48 58 L30 40 L40 38 L56 54 Z" />
-    <path d="M52 66 L34 82 L28 80 L44 62 Z" />
-    <path d="M52 60 L28 56 L28 60 L52 64 Z" />
-  </g>
-);
-
-const distantPlane = (
-  <g transform="translate(120 90) scale(0.45)">
-    <path d="M40 62 C70 52 200 48 300 50 C330 51 345 56 348 60 C345 64 330 69 300 70 C200 74 70 70 40 66 Z" />
-    <path d="M120 55 L60 10 L75 8 L150 48 Z" />
-    <path d="M150 70 L75 110 L60 108 L120 63 Z" />
-    <path d="M48 58 L30 40 L40 38 L56 54 Z" />
-    <path d="M52 66 L34 82 L28 80 L44 62 Z" />
-  </g>
-);
-
 const treeline = (
   <path d="M0 260 L0 220 L18 228 L30 205 L45 222 L62 198 L78 220 L95 208 L110 226 L128 202 L145 224 L160 210 L178 228 L195 200 L212 222 L230 212 L248 230 L265 204 L282 226 L300 214 L318 232 L335 206 L352 228 L370 216 L388 234 L405 208 L422 230 L440 218 L458 236 L475 210 L492 232 L510 220 L528 238 L545 212 L562 234 L580 222 L598 240 L615 214 L632 236 L650 224 L668 242 L685 216 L702 238 L720 226 L738 244 L755 218 L772 240 L790 228 L808 246 L825 220 L842 242 L860 230 L878 248 L895 222 L912 244 L930 232 L948 250 L965 224 L982 246 L1000 234 L1018 252 L1035 226 L1052 248 L1070 236 L1088 254 L1105 228 L1122 250 L1140 238 L1158 256 L1175 230 L1190 246 L1200 240 L1200 260 Z" />
 );
@@ -118,8 +92,6 @@ const feathers = (
 const variants: Record<Variant, ReactNode> = {
   airfield: (
     <>
-      {bomber}
-      {distantPlane}
       {treeline}
       {controlTower}
     </>

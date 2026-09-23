@@ -24,7 +24,7 @@ export default function Home() {
                   <Image
                     src="/cover-front.png"
                     alt="Wings of Time book cover by Andrea Bailey"
-                    width={638}
+                    width={736}
                     height={1188}
                     className="rounded-sm"
                     priority
