@@ -6,8 +6,6 @@ import FadeIn from "./components/FadeIn";
 
 const AMAZON_URL =
   "https://www.amazon.co.uk/Wings-Time-Bailey/dp/106665591X";
-const BROWNS_URL =
-  "https://www.brownsbfs.co.uk/Product/Bailey/Wings-of-Time/9781066655915";
 
 export default function Home() {
   return (
@@ -215,24 +213,18 @@ export default function Home() {
               Get Your Copy
             </h2>
             <p className="mt-4 text-xl text-[#f5e6d3]/80 md:text-2xl">
-              Available in paperback, hardback, and ebook wherever books are
-              sold.
+              Available in paperback, hardback, and ebook — ask for it at
+              your local bookshop, or order online.
             </p>
-            <div className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-2">
-              {[
-                { name: "Amazon", href: AMAZON_URL },
-                { name: "Browns Books", href: BROWNS_URL },
-              ].map((store) => (
-                <a
-                  key={store.name}
-                  href={store.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded border border-[#c97b4a]/60 bg-[#1f1612] px-6 py-4 font-[family-name:var(--font-cinzel)] text-base font-medium uppercase tracking-wider transition hover:border-[#c97b4a] hover:bg-[#c97b4a]/10"
-                >
-                  {store.name}
-                </a>
-              ))}
+            <div className="mx-auto mt-10 flex max-w-2xl justify-center">
+              <a
+                href={AMAZON_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded border border-[#c97b4a]/60 bg-[#1f1612] px-6 py-4 font-[family-name:var(--font-cinzel)] text-base font-medium uppercase tracking-wider transition hover:border-[#c97b4a] hover:bg-[#c97b4a]/10"
+              >
+                Amazon
+              </a>
             </div>
           </FadeIn>
         </section>
